@@ -2,9 +2,9 @@ version: "3"
 
 services:
   apache:
-    build: ./docker_files/apache/
+    build: luokeychen/msol-apache:1.0
     ports:
-      - 80:80
+      - 8123:80
     volumes:
       - ./docker_files/apache/htdocs/:/usr/local/apache2/htdocs/
       - ./docker_files/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
@@ -12,11 +12,11 @@ services:
       - ./movabletype/mt-static/:/usr/local/apache2/htdocs/mt-static/
       - ./plugins/:/usr/local/src/plugins/
   mysql:
-    image: mysql:5.7
+    image: luokeychen/msol-mysql:1.0
     environment:
-      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: msolchina
       MYSQL_USER: admin
-      MYSQL_PASSWORD: pass
+      MYSQL_PASSWORD: msolchina
       MYSQL_DATABASE: mt
       TZ: "Asia/Tokyo"
     ports:
@@ -28,10 +28,10 @@ services:
     stdin_open: true
     restart: always
   mailhog:
-    image: mailhog/mailhog
+    image: luokeychen/msol-mailhog:1.0
     ports:
       - 8025:8025
   memcached:
-    image: memcached:1.5.19-alpine
+    image: luokeychen/msol-memcached:1.0   
     ports:
       - 11211:11211
