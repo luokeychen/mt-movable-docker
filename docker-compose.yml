@@ -2,7 +2,7 @@ version: "3"
 
 services:
   apache:
-    build: luokeychen/msol-apache:1.0
+    image: luokeychen/msol-apache:1.0
     ports:
       - 8123:80
     volumes:
@@ -26,7 +26,6 @@ services:
       - ./docker_files/mysql/mysql_data:/var/lib/mysql
     tty: true
     stdin_open: true
-    restart: always
   mailhog:
     image: luokeychen/msol-mailhog:1.0
     ports:
